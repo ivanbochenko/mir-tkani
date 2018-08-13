@@ -1,0 +1,25 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+django = "*"
+pillow = "==5.0.0"
+pytz = "==2017.3"
+django-heroku = "*"
+gunicorn = "*"
+dj-database-url = "*"
+"psycopg2" = "*"
+
+
+[dev-packages]
+
+
+
+[requires]
+
+python_version = "3.6"

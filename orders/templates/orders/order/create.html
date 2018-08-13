@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    Оформление
+{% endblock %}
+
+{% block content %}
+<section>
+  <div class="container">
+    <div class="row columns">
+      <div class="column is-10 is-offset-1">
+        <div class="card">
+          <div class="card-content">
+            <div class="row columns">
+              <div class="column is-6">
+                  <p class="subtitle">Контроль</p>
+                  {% if fail %}
+                    <div class="notification is-danger">
+                      <strong>Заполните форму правильно!</strong>
+                    </div>
+                  {% endif %}
+                  <form action="." method="post">
+                      {% csrf_token %}
+                      {{ form.as_p }}<br>
+                      <input type="submit" class="button is-success" value="Заказать">
+                  </form>
+              </div>
+              <div class="column is-6">
+
+                  <p class="subtitle">
+                    Ваш заказ:
+                  </p>
+                  <ul class="menu-list">
+                      {% for item in cart %}
+                          <li>
+                          {{ item.quantity }}x {{ item.product.name }}
+                          <span>{{ item.total_price }} грн.</span>
+                          </li>
+                      {% endfor %}
+
+                  <li class="list-group-item active">Сумма: {{ cart.get_total_price }} грн.</li>
+                  </ul>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

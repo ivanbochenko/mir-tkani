@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    Завершение
+{% endblock %}
+
+{% block content %}
+<section class="hero is-success">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Спасибо за Ваш заказ!
+      </h1>
+      <h2 class="subtitle">
+        Ваш заказ успешно оформлен, и мы вскоре с вами свяжемся!<br>
+        Номер заказа: <strong>{{ order.id }}</strong>.
+      </h2>
+    </div>
+  </div>
+</section>
+{% endblock %}

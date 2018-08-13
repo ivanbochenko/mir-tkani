@@ -1,0 +1,66 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block content %}
+<script async type="text/javascript" src="{% static 'js/gallery.js' %}"></script>
+
+<section style="padding-top: 50px;" class="container">
+  <div class="tile is-ancestor has-background-white is-shady">
+    <div class="tile is-parent">
+      <article class="tile is-2 is-child">
+        <div class="lightbox-gallery">
+            <div>{% if product.image1 %}<img src="{{ product.image1.url }}" data-image-hd="{{ product.image1.url }}" alt="{{ product.name }}" style="height: 70px; width: 70px"> {% endif %}</div>
+            <div>{% if product.image2 %}<img src="{{ product.image2.url }}" data-image-hd="{{ product.image2.url }}" alt="{{ product.name }}" style="height: 70px; width: 70px"> {% endif %}</div>
+            <div>{% if product.image3 %}<img src="{{ product.image3.url }}" data-image-hd="{{ product.image3.url }}" alt="{{ product.name }}" style="height: 70px; width: 70px"> {% endif %}</div>
+        </div>
+      </article>
+      <article class="tile is-child">
+        <div>{% if product.image1 %}<img src="{{ product.image1.url }}" data-image-hd="{{ product.image1.url }}" alt="{{ product.name }}" style="height: ; width: "> {% endif %}</div>
+        </article>
+    </div>
+
+    <div class="tile is-parent is-vertical">
+
+        <article class="tile is-child">
+          <nav class="level">
+            <div class="level-left">
+              <div class="level-item">
+                <h1 class="title">{{ product.name }}</h1>
+              </div>
+            </div>
+
+              <div class="level-item">
+                <form class="media-left" action="{% url "cart:cart_add" product.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="field">
+                      <div class="control">
+                        {{ cart_product_form }}
+                      </div>
+                    </div>
+                    {% if product.stock > 0 %}<input type="submit" value="В корзину" class="button is-primary">
+                    {% else %} <a class="button is-warning">Нет в наличии</a>{% endif %}
+                </form>
+              </div>
+
+          </nav>
+        </article>
+
+      <article class="tile is-child">
+        <p class="subtitle is-6"><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></p>
+        <p class="subtitle is-6"><span class="tag is-rounded">Артикул:</span>{{ product.articul }}</p>
+        <p class="subtitle is-6"><span class="tag is-rounded">Цена:</span>{{ product.price }} грн</p>
+        <p class="subtitle is-6"><span class="tag is-rounded">Страна производитель:</span>{{ product.country }}</p>
+      </article>
+      <article class="tile is-child notification has-background-white-ter">
+        <div >
+          <p class="subtitle is-6">{{ product.description|safe|linebreaksbr }}</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

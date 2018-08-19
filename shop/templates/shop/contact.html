@@ -3,18 +3,17 @@
     Контакты
 {% endblock %}
 {% block content %}
-  <section class="hero is-fullheight is-bold is-warning">
+  <section class="hero">
         <div class="hero-body">
             <div class="container">
                 <div class="column is-12">
-                    <h1 class="title has-text-centered">Контактная информация компании OOO "NOR"</h1>
+                    <h1 class="title has-text-centered">{{ text.title }}</h1>
                     <br>
                     <div class="columns">
                       <div class="column is-3">
-                        <span class="tag is-danger">Название:</span><p>OOO "NOR"</p><br>
-                        <span class="tag is-danger">Адрес:</span><p>Украина, Киев, Княжий затон 14Г, 02140</p><br>
-                        <span class="tag is-danger">Телефон:</span><p>+38097556-12-17, Офис</p><br>
-                        <span class="tag is-danger">Email:</span><p>nor.tkani@ukr.net</p><br>
+                        <p style="color: black">{{ text.text1 }}</p><br>
+                        <p style="color: black">{{ text.text2 }}</p><br>
+                        <p style="color: black">{{ text.text3 }}</p><br>
                       </div>
 
                       <div class="column is-6">

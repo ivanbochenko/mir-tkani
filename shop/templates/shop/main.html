@@ -13,16 +13,19 @@
             <p>{{ image.text }}</p>
 
             <div class="columns is-centered" >
+                {% if card1 %}
                 <div class="column">
                     <div class="card" style="height: 500px">
                         <div class="card-image">
                             <figure class="image">
-                                <img style="height: 320px" src="{% if card1 %} {{ card1.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}" alt="Placeholder image">
+                              <a href="{{ card1.link }}">
+                    						<img style="height: 320px" src="{% if card1 %} {{ card1.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}">
+                    					</a>
                             </figure>
                         </div>
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-content">
+                                <div class="media-content has-text-centered">
                                     <h1 class="title is-4">{{ card1.name }}</h1>
                                 </div>
                             </div>
@@ -33,17 +36,20 @@
                         </div>
                     </div>
                 </div>
-
+                {% endif %}
+                {% if card2 %}
                 <div class="column">
                     <div class="card" style="height: 500px">
                         <div class="card-image">
                             <figure class="image">
-                                <img style="height: 320px" src="{% if card2 %} {{ card2.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}" alt="Placeholder image">
+                              <a href="{{ card2.link }}">
+                    						<img style="height: 320px" src="{% if card2 %} {{ card2.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}">
+                    					</a>
                             </figure>
                         </div>
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-content">
+                                <div class="media-content has-text-centered">
                                   <h1 class="title is-4">{{ card2.name }}</h1>
                                 </div>
                             </div>
@@ -54,17 +60,20 @@
                         </div>
                     </div>
                 </div>
-
+                {% endif %}
+                {% if card3 %}
                 <div class="column">
                     <div class="card" style="height: 500px">
                         <div class="card-image">
                             <figure class="image">
-                              <img style="height: 320px" src="{% if card3 %} {{ card3.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}" alt="Placeholder image">
+                              <a href="{{ card3.link }}">
+                    						<img style="height: 320px" src="{% if card3 %} {{ card3.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}">
+                    					</a>
                             </figure>
                         </div>
                         <div class="card-content">
                             <div class="media">
-                                <div class="media-content">
+                                <div class="media-content has-text-centered">
                                   <h1 class="title is-4">{{ card3.name }}</h1>
                                 </div>
                             </div>
@@ -75,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-
+                {% endif %}
             </div>
         </div>
         </div3

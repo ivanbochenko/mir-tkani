@@ -5,37 +5,9 @@
 {% endblock %}
 
 {% block content %}
-
-  <nav class="navbar is-white">
-    <div class="container">
-      <div class="navbar-menu">
-        <div class="navbar-start">
-          {% if category %}<a class="navbar-item" href="{% url 'shop:product_list' %}">Все</a>
-          {% else %}<a class="navbar-item is-active" href="{% url 'shop:product_list' %}">Все</a>{% endif %}
-          {% for c in categories %}
-            {% if category.slug == c.slug %}
-            <a class="navbar-item is-active" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-            {% else %}
-            <a class="navbar-item" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
-            {% endif %}
-          {% endfor %}
-        </div>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <form method="GET" action="" id="searchform">
-                <input  id="searchbox" type="text" name="q" class="input" value="{{ request.GET.q }}" placeholder="Поиск...">
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-
-
   <section class="section">
-    <div class="row columns">
+    <div class="columns">
       {% for product in products %}
-          {# {{ item }} #}
         <div class="column is-one-third">
           <div class="card">
             <div class="card-image has-text-centered">
@@ -43,16 +15,24 @@
                 <img src="{% if product.image1 %} {{ product.image1.url }} {% else %} {% static 'img/default.png' %} {% endif %}" style="width: auto; height: 250px" />
               </a>
             </div>
-            <div class="card-content">
+            <div class="card-content has-text-centered">
               <div class="content">
                 <p class="title is-4">{{ product.name }}</p>
+                <div class="columns">
+                  <div class="column is-2 is-offset-2">
+                    <span class=" tag">Цена:</span><br><br>
+                    <span class=" tag">Артикул:</span>
+                  </div>
+                  <div class="column">
+                    <p class="subtitle is-5"><b>{{ product.price }}</b> грн</p>
+                    <p class="subtitle is-6">{{ product.articul }}</p>
 
-                <p class="subtitle is-6"><span class="tag is-rounded">Цена:</span>{{ product.price }} грн</p>
+                  </div>
+                </div>
               </div>
             </div>
             <footer class="card-footer">
               <span class="card-footer-item">
-
                 <a class="button is-primary" href="{{ product.get_absolute_url }}">Подробнее</a>
               </span>
             </footer>
@@ -60,7 +40,7 @@
         </div>
           {% if forloop.counter|divisibleby:3 %}
       </div>
-      <div class="row columns">
+      <div class="columns">
           {% endif %}
       {% endfor %}
       </div>

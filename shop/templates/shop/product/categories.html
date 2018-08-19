@@ -1,0 +1,31 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+{% block title %}
+    Каталог
+{% endblock %}
+
+{% block content %}
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        {% for category in categories %}
+          <div class="column is-one-third">
+            <div class="">
+              <a href="{{ category.get_absolute_url }}">
+                <img style="height: 240px; width: 320px; display: block; margin: 0 auto;" src="{% if category.image %} {{ category.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}"/>
+              </a>
+            </div>
+            <div style="text-align: center">
+              <h1 class="subtitle" style="padding-top: 20px;">{{ category.name }}</h1>
+            </div>
+          </div>
+      {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class="columns">
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

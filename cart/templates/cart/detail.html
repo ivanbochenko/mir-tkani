@@ -46,7 +46,7 @@
                               <tr>
                                   <td>
                                       <a href="{{ product.get_absolute_url }}">
-                                          <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.png' %} {% endif %}" style="height: 150px; width: 200px">
+                                          <img src="{% if product.image1 %} {{ product.image1.url }} {% else %} {% static 'img/default.png' %} {% endif %}" style="height: 150px; width: 200px">
                                       </a>
                                   </td>
                                   <td>{{ product.name }}</td>
@@ -74,7 +74,7 @@
                       </tbody>
                   </table>
               <p class="text-right">
-                  <a href="{% url "shop:product_list" %}" class="button is-info">Продолжить покупки</a>
+                  <a href="{% url "shop:categories" %}" class="button is-info">Продолжить покупки</a>
                   <a href="{% url "orders:order_create" %}" class="button is-success">Заказать</a>
               </p>
           </div>

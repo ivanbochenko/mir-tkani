@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth import views as auth_views
-from shop import views as core_views
-from shop.forms import LoginForm
+# from django.contrib.auth import views as auth_views
+# from shop import views as core_views
+# from shop.forms import LoginForm
 
 urlpatterns = [
-    path('signup/', core_views.signup, name='signup'),
-    path('login/', auth_views.login, {'authentication_form': LoginForm}, name='login'),
-    path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
+    # path('signup/', core_views.signup, name='signup'),
+    # path('login/', auth_views.login, {'authentication_form': LoginForm}, name='login'),
+    # path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
     path('admin/', admin.site.urls),
     path('cart', include('cart.urls')),
     path('orders/', include('orders.urls')),

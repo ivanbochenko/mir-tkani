@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="navbar is-white topNav">
+<nav class="navbar is-fixed-top is-white topNav">
 			<div class="container">
 				<div class="navbar-brand">
 					<a class="navbar-item" href="{% url 'shop:main' %}">
@@ -14,7 +14,19 @@
 				</div>
 				<div id="topNav" class="navbar-menu">
 					<div class="navbar-start">
-						<a class="navbar-item" href="{% url 'shop:product_list' %}">Каталог</a>
+
+						<div class="navbar-item has-dropdown is-hoverable">
+						  <a class="navbar-link" href="{% url 'shop:categories' %}">
+						    Каталог
+						  </a>
+						  <div class="navbar-dropdown">
+								{% for c in categories %}
+
+								 <a class="navbar-item" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+
+							 {% endfor %}
+						  </div>
+						</div>
 						<a class="navbar-item" href="{% url 'shop:about' %}">О нас</a>
 						<a class="navbar-item" href="{% url 'shop:payship' %}">Оплата и доставка</a>
 						<a class="navbar-item" href="{% url 'shop:contact' %}">Контакты</a>
@@ -26,6 +38,13 @@
 							<a class="navbar-item" href="{% url 'cart:cart_detail' %}">Корзина: {{ totail_items }}<i class="fas fa-shopping-cart"></i></a>
 							{% endif %}
 						{% endwith %}
+						{% if products %}
+						<div class="navbar-item">
+	            <form method="GET" action="" id="searchform">
+	                <input  id="searchbox" type="text" name="q" class="input" value="{{ request.GET.q }}" placeholder="Поиск...">
+	            </form>
+	          </div>
+						{% endif %}
 					</div>
 				</div>
 			</div>

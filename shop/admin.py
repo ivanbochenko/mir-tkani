@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Card, Main
+from .models import Category, Product, Card, Main, Text
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -22,3 +22,5 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(Main)
 
 admin.site.register(Card)
+
+admin.site.register(Text)

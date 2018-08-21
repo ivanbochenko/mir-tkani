@@ -25,7 +25,7 @@ SECRET_KEY = 'jf$ac236s)uv)6xa&o0#@wmt+37zvlwf=atbi)%et^7=%3#$bb'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nor-shop.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ivanb.pythonanywhere.com', 'nor-shop.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+3'
 
 USE_I18N = True
 

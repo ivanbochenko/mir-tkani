@@ -34,13 +34,21 @@
               <div class="level-item">
                 <form class="media-left" action="{% url "cart:cart_add" product.id %}" method="post">
                     {% csrf_token %}
-                    <div class="field">
+                    <div class="field has-addons">
+                      <p class="control">
+                        <a class="button is-static">
+                          M:
+                        </a>
+                      </p>
                       <div class="control">
                         {{ cart_product_form }}
                       </div>
+                      <div class="control">
+                        {% if product.stock > 0 %}<input type="submit" value="В корзину" class="button is-primary"></input>
+                        {% else %} <a class="button is-warning">Нет в наличии</a>{% endif %}
+                      </div>
                     </div>
-                    {% if product.stock > 0 %}<input type="submit" value="В корзину" class="button is-primary">
-                    {% else %} <a class="button is-warning">Нет в наличии</a>{% endif %}
+
                 </form>
               </div>
 
@@ -54,7 +62,7 @@
           <div class="column">
             <span class="tag subtitle is-6">Артикул:</span><br>
             <span class="tag subtitle is-6">Цена:</span><br>
-            <span class="tag subtitle is-6">Цена оптом:</span><br>
+            <span class="tag subtitle is-6">Цена оптом от 10м:</span><br>
             <span class="tag subtitle is-6">Страна производитель:</span>
           </div>
           <div class="column">

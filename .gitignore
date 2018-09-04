@@ -1,2 +1,6 @@
-db.sqlite3
-products
+products/
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/

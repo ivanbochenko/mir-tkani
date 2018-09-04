@@ -13,7 +13,7 @@
           <div class="card-content">
             <div class="row columns">
               <div class="column is-6">
-                  <p class="subtitle">Контроль</p>
+                  <h1 class="title">Контроль</h1>
                   {% if fail %}
                     <div class="notification is-danger">
                       <strong>Заполните форму правильно!</strong>
@@ -26,21 +26,34 @@
                   </form>
               </div>
               <div class="column is-6">
-
-                  <p class="subtitle">
-                    Ваш заказ:
-                  </p>
-                  <ul class="menu-list">
+                <div class="">
+                  <h1 class="title">Ваш Ззаказ</h1>
+                  <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                    <thead>
+                      <tr>
+                        <th>Наименование товара</th>
+                        <th>Кол-во</th>
+                        <th>Цена</th>
+                        <th>Сумма</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th><li class="list-group-item active">Сумма: {{ cart.get_total_price }} грн.</li></th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
                       {% for item in cart %}
-                          <li>
-                          {{ item.quantity }}x {{ item.product.name }}
-                          <span>{{ item.total_price }} грн.</span>
-                          </li>
+                      <tr>
+                        <th>{{ item.product.name }}</th>
+                        <th>{{ item.quantity }} м.</th>
+                        <th>{{ item.price }} грн.</th>
+                        <th>{{ item.total_price }} грн.</th>
+                      </tr>
                       {% endfor %}
-
-                  <li class="list-group-item active">Сумма: {{ cart.get_total_price }} грн.</li>
-                  </ul>
-
+                    </tbody>
+                  </table>
+                </div>
               </div>
           </div>
         </div>
